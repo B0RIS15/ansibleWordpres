@@ -17,7 +17,7 @@
 - name: install nginx configuration
   template:
     src: wordpress.conf
-    dest: /etc/nginx/sites-available/wordpress.conf
+    dest: /etc/nginx/sites-available/wordpress.conf # В моем случае, цеплялись только файлы конфигурации из conf.d
   notify: restart nginx
 
 - name: activate site configuration

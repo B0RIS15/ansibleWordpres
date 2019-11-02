@@ -1,0 +1,2 @@
+[appservers_php]
+linux1 ansible_host=35.193.208.109 ansible_private_key_file="~/.ssh/id_rsa"

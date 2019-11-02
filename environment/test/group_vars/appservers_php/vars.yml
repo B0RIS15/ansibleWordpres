@@ -1,0 +1,4 @@
+mysql_root_password: "MyPassweed"
+domain: "example.com"
+download_url: "http://wordpress.org/latest.tar.gz"
+wpdirectory: "/var/www"

@@ -1,20 +1,23 @@
-- name: install php5
-  apt: pkg={{ item }}
-  with_items:
-    - php5
-    - php5-cgi
-    - php5-fpm
-    - php5-memcache
-    - php5-memcached
-    - php5-mcrypt
-    - php5-mysql
-    - php5-gd
-    - php5-curl
-    - php5-xmlrpc
+- name: install php5 # У меня не сработало без добавления репозитория с PHP
+  apt: 
+    name: "{{ item }}" # Можно передавать список без цикла. 
+    state: latest
+    update_cache: true
+  with_items: # with_items старый синтаксис, лучше использовать loop
+    - php5.6 
+    - php5.6-cgi
+    - php5.6-fpm
+    - php5.6-memcache
+    - php5.6-memcached
+    - php5.6-mcrypt
+    - php5.6-mysql
+    - php5.6-gd
+    - php5.6-curl
+    - php5.6-xmlrpc
 
 - name: change listen socket
   lineinfile:
-    dest: '/etc/php5/fpm/pool.d/www.conf'
+    dest: '/etc/php/5.6/fpm/pool.d/www.conf'
     insertafter: 'listen = 127.0.0.1:9000'
     line: 'listen = /var/run/fpm.socket'
-  notify: restart php5-fpm
+  notify: restart php5.6-fpm
