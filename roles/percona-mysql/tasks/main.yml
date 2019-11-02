@@ -1,7 +1,7 @@
 - name: Add GPG key for repository
   command: apt-key adv --keyserver keyserver.ubuntu.com --recv CD2EFD2A
 
-- name: Add Percona repository
+- name: Add Percona repository # А почему сделано не через модуль add repository? Неидемпотентно
   shell:
     echo "deb http://repo.percona.com/apt {{ ansible_lsb['codename'] }} main" | tee /etc/apt/sources.list.d/percona.list
     creates=/etc/apt/sources.list.d/percona.list
@@ -9,8 +9,8 @@
 - name: Install Percona MySQL server
   apt:
     pkg: "{{ item }}"
-    update_cache: true
-  with_items:
+    allow_unauthenticated: true
+  with_items: # deprecated
     - percona-server-server-5.5
     - percona-server-client-5.5
     - python-mysqldb
