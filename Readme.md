@@ -1,6 +1,7 @@
 ## ansibleWordpress
 
 Под какую OS сценарии?
+- Для Ubuntu 18.04
 
 На master-сервере необходим ansible и python.
 На client-сервере python и ssh.
